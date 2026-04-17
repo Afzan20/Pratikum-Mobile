@@ -2,6 +2,7 @@ package com.example.afzan_apps
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnSelanjutnya.setOnClickListener {
             val intent = Intent(this, FourthActivity::class.java)
+            /*tambahkan bagian berikut*/
+            intent.putExtra("nama", "Politeknik Caltex Riau")
+            intent.putExtra("asal", "Rumbai")
+            intent.putExtra("usia", 25)
+
             startActivity(intent)
         }
     }
