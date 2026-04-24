@@ -3,6 +3,7 @@ package com.example.afzan_apps.Pertemuan_4
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +12,7 @@ import com.example.afzan_apps.MainActivity
 import com.example.afzan_apps.Pertemuan_3.ThirdResultActivity
 import com.example.afzan_apps.R
 import com.example.afzan_apps.databinding.ActivityFourthBinding
+import com.example.afzan_apps.databinding.ActivityThirdBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -26,15 +28,12 @@ class FourthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-        binding.btnKembali.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            val name = intent.getStringExtra("Nama")
-            val from = intent.getStringExtra("Usia")
-            val age = intent.getIntExtra("Asal",0)
-            Log.e("Data Intent","Nama: $name , Usia: $age, Asal: $from")
-            startActivity(intent)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = "Activity Fourth"
+            subtitle = "Ini adalah subtitle"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
         }
 
         binding.btnShowSnackbar.setOnClickListener {
@@ -70,5 +69,15 @@ class FourthActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.e("onDestroy", "FourActivity dihapus dari stack")
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

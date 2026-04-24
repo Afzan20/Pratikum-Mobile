@@ -1,25 +1,24 @@
-package com.example.afzan_apps.pertemuan_2
+package com.example.afzan_apps.Pertemuan_5
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.afzan_apps.Pertemuan_4.FourthActivity
 import com.example.afzan_apps.R
 import com.example.afzan_apps.databinding.ActivityFifthBinding
-import com.example.afzan_apps.databinding.ActivitySecondBinding
 
-class SecondActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySecondBinding
+class FifthActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFifthBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivitySecondBinding.inflate(layoutInflater)
+        binding = ActivityFifthBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -28,33 +27,37 @@ class SecondActivity : AppCompatActivity() {
         }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Activity Second"
+            title = "Activity Fifth"
             subtitle = "Ini adalah subtitle"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
-
-        // Inisialisasi komponen
-        val inputNama: EditText = findViewById(R.id.inputNama)
-        val btnSubmit: Button = findViewById(R.id.buttonSubmit)
-
-
-
-        btnSubmit.setOnClickListener {
-            //Mengambil value dari inputNama dan menampilkan di Logcat
-            val nama = inputNama.text
-            Log.e("Klik btnSubmit","Tombol berhasil di tekan. Isi dari inputNama = $nama")
-
-            Toast.makeText(this, "Anda telah melakukan klik pada tombol Submit", Toast.LENGTH_SHORT).show()
+        binding.btnNext.setOnClickListener {
+            val intent = Intent(this, WebViewActivity::class.java)
+            startActivity(intent)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
-
+            R.id.action_search -> {
+                Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_settings -> {
+                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
