@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -33,6 +34,24 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("usia", 25)
 
             startActivity(intent)
+        }
+
+        binding.btnLogout.setOnClickListener {
+
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah yakin ingin logout?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    startActivity(Intent(this, AuthActivity::class.java))
+                    finish()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Tidak", null)
+                .show()
         }
     }
 }

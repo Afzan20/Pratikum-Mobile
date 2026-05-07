@@ -14,18 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Afzan_Apps">
         <activity
-            android:name=".Pertemuan_5.WebViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Pertemuan_5.FifthActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Afzan_Apps">
+            android:name=".SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AuthActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".Pertemuan_5.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Pertemuan_5.FifthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Afzan_Apps" />
         <activity
             android:name=".Pertemuan_4.FourthActivity"
             android:exported="false" />
