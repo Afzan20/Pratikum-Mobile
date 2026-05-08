@@ -1,6 +1,5 @@
-package com.example.afzan_apps.Pertemuan_4
+package com.example.afzan_apps.Home.Pertemuan_4
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -8,11 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.afzan_apps.MainActivity
-import com.example.afzan_apps.Pertemuan_3.ThirdResultActivity
 import com.example.afzan_apps.R
 import com.example.afzan_apps.databinding.ActivityFourthBinding
-import com.example.afzan_apps.databinding.ActivityThirdBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 

@@ -1,4 +1,4 @@
-package com.example.afzan_apps.Pertemuan_5
+package com.example.afzan_apps.Home.Pertemuan_5
 
 import android.os.Bundle
 import android.webkit.WebViewClient

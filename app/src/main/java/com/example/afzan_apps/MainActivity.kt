@@ -2,13 +2,13 @@ package com.example.afzan_apps
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.afzan_apps.Pertemuan_4.FourthActivity
+import com.example.afzan_apps.Home.Pertemuan_4.FourthActivity
+import com.example.afzan_apps.Home.Pertemuan_7.SeventhActivity
 import com.example.afzan_apps.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("asal", "Rumbai")
             intent.putExtra("usia", 25)
 
+            startActivity(intent)
+        }
+
+        binding.btnP7.setOnClickListener {
+            val intent = Intent(this, SeventhActivity::class.java)
             startActivity(intent)
         }
 
