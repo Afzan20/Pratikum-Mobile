@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.afzan_apps.Home.Pertemuan_10.TenthActivity
 import com.example.afzan_apps.Home.Pertemuan_9.NinthActivity
 import com.example.afzan_apps.R
 import com.example.afzan_apps.databinding.FragmentHomeBinding
@@ -27,6 +28,11 @@ class HomeFragment : Fragment() {
 
         binding.btnP9.setOnClickListener {
             val i= Intent(requireContext(), NinthActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnP10.setOnClickListener {
+            val i= Intent(requireContext(), TenthActivity::class.java)
             startActivity(i)
         }
     }
