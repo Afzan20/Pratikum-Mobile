@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.afzan_apps.Home.Pertemuan_10.TenthActivity
 import com.example.afzan_apps.Home.Pertemuan_9.NinthActivity
 import com.example.afzan_apps.R
+import com.example.afzan_apps.data.api.CatFactApiClient
 import com.example.afzan_apps.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -34,6 +37,23 @@ class HomeFragment : Fragment() {
         binding.btnP10.setOnClickListener {
             val i= Intent(requireContext(), TenthActivity::class.java)
             startActivity(i)
+        }
+
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
+
+        loadCatFact()
+    }
+
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
         }
     }
 }
