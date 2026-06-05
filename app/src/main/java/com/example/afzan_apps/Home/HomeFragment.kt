@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.afzan_apps.Home.Pertemuan_10.TenthActivity
 import com.example.afzan_apps.Home.Pertemuan_9.NinthActivity
+import com.example.afzan_apps.Home.Photo.PhotoAdapter
 import com.example.afzan_apps.R
 import com.example.afzan_apps.data.api.CatFactApiClient
+import com.example.afzan_apps.data.api.PhotoApiClient
 import com.example.afzan_apps.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
 
@@ -44,6 +48,7 @@ class HomeFragment : Fragment() {
         }
 
         loadCatFact()
+        loadPhoto()
     }
 
     private fun loadCatFact() {
@@ -53,6 +58,28 @@ class HomeFragment : Fragment() {
                 binding.tvCatFact.text = "\"${response.fact}\""
             } catch (e: Exception) {
                 binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
+        }
+    }
+
+    private fun loadPhoto() {
+        lifecycleScope.launch {
+            try {
+                val photos = PhotoApiClient.apiService.getPhotos()
+                val adapter = PhotoAdapter(photos)
+                binding.rvGallery.adapter = adapter
+
+                /** List Tampil Vertical*/
+                binding.rvGallery.layoutManager = LinearLayoutManager(requireContext())
+
+                /** List Tampil Horizontal */
+                //binding.rvGallery.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+                /** List Tampil Grid */
+                //binding.rvGallery.layoutManager = GridLayoutManager(requireContext(),2)
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat gambar", Toast.LENGTH_SHORT).show()
             }
         }
     }
