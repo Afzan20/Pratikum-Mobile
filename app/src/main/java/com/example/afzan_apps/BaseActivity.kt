@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.afzan_apps.Home.HomeFragment
 import com.example.afzan_apps.Message.MessageFragment
 import com.example.afzan_apps.More.MoreFragment
+import com.example.afzan_apps.Note.FragmentNote
 import com.example.afzan_apps.databinding.ActivityBaseBinding
 
 
@@ -40,6 +41,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.more -> {
                     replaceFragment(MoreFragment())
+                    true
+                }
+                R.id.note -> {
+                    replaceFragment(FragmentNote())
                     true
                 }
                 else -> false // return false jika item tidak ada yang di klik

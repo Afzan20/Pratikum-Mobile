@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Afzan_Apps">
         <activity
+            android:name=".Note.NoteFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".Message.Tutorial.TutorialMessageActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Home.Pertemuan_10.TenthActivity"
             android:exported="false" />
