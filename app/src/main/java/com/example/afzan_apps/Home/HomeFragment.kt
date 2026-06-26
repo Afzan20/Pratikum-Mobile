@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.afzan_apps.Home.Pertemuan_10.TenthActivity
+import com.example.afzan_apps.Home.Pertemuan_3.ThirdActivity
 import com.example.afzan_apps.Home.Pertemuan_9.NinthActivity
 import com.example.afzan_apps.Home.Photo.PhotoAdapter
 import com.example.afzan_apps.R
@@ -32,6 +33,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnP3.setOnClickListener {
+            val i= Intent(requireContext(), ThirdActivity::class.java)
+            startActivity(i)
+        }
 
         binding.btnP9.setOnClickListener {
             val i= Intent(requireContext(), NinthActivity::class.java)
